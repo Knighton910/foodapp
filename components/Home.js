@@ -7,7 +7,7 @@ import popularData from '../assets/data/popularData'
 import colors from '../assets/colors/colors'
 
 Feather.loadFont();
-
+MaterialCommunityIcons.loadFont();
 
 
 export default Home = () => {
@@ -53,11 +53,13 @@ export default Home = () => {
                 </View>
             </SafeAreaView>
 
+
             {/** Titles */}
             <View style={styles.titlesWrapper}>
                 <Text style={styles.titlesSubtitle}>Food</Text>
                 <Text style={styles.titlesTitle}>Delivery</Text>
             </View>
+
 
             {/** Search  */}
             <View style={styles.searchWrapper}>
@@ -66,6 +68,7 @@ export default Home = () => {
                     <Text style={styles.searchText}>Search</Text>
                 </View>
             </View>
+
 
             {/** Categories  */}
             <View style={styles.categoriesWrapper}>
@@ -78,6 +81,39 @@ export default Home = () => {
                         horizontal={true}
                     />
                 </View>
+            </View>
+
+
+            {/** Popular  */}
+            <View style={styles.popularWrapper}>
+                <Text style={styles.popularTitle}>Popular</Text>
+                {popularData.map((item) => (
+                    <View style={[
+                        styles.popularCardWrapper,
+                        {
+                            marginTop: item.id == 1 ? 10 : 20,
+                        }
+                    ]}>
+                       <View>
+                           <View>
+                               <View style={styles.popularTopWrapper}>
+                                   <MaterialCommunityIcons 
+                                        name="crown" 
+                                        size={12}
+                                        color={colors.primary} 
+                                    />
+                                    <Text style={styles.popularTopText}>top of the week</Text>
+                               </View>
+                               <View style={styles.popularTitlesWrapper}>
+                                    <Text style={styles.popularTitlesTitle}>{item.title}</Text>
+                                    <Text style={styles.popularTitlesWeight}>
+                                        Weight {item.weight}
+                                    </Text>
+                               </View>
+                           </View>
+                       </View>
+                    </View>
+                ))}
             </View>
         </View>
     );
@@ -175,5 +211,42 @@ const styles = StyleSheet.create({
     },
     categorySelectIcon: {
         alignSelf: 'center'
+    },
+    popularWrapper: {
+        paddingHorizontal: 20,
+    },
+    popularTitle: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 16,
+    },
+    popularCardWrapper: {
+        backgroundColor: colors.white,
+        borderRadius: 25,
+        paddingTop: 20,
+        paddingLeft: 20,
+        flexDirection: 'row'
+    },
+    popularTopWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    popularTopText: {
+        marginLeft: 10,
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 14,
+    },
+    popularTitlesWrapper: {
+        marginTop: 20,
+    },
+    popularTitlesTitle: {
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 14,
+        color: colors.textDark,
+    },
+    popularTitlesWeight: {
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 12,
+        color: colors.textLight,
+        marginTop: 5,
     },
 });
