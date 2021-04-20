@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import categoriesData from '../assets/data/categoriesData'
 import popularData from '../assets/data/popularData'
 import colors from '../assets/colors/colors'
+import { color } from 'react-native-reanimated';
 
 Feather.loadFont();
 MaterialCommunityIcons.loadFont();
@@ -110,6 +111,15 @@ export default Home = () => {
                                         Weight {item.weight}
                                     </Text>
                                </View>
+                           </View>
+                           <View style={styles.popularCardBottom}>
+                                <View style={styles.addPizzaButton}>
+                                    <Feather name="plus" size={10} color={colors.textDark}/>
+                                </View>
+                                <View style={styles.ratingWrapper}>
+                                    <MaterialCommunityIcons name="star" size={10} color={colors.textDark} />
+                                    <Text style={styles.rating}>{item.rating}</Text>
+                                </View>
                            </View>
                        </View>
                     </View>
@@ -248,5 +258,29 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: colors.textLight,
         marginTop: 5,
+    },
+    popularCardBottom: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 10,
+        marginLeft: -20,
+    },
+    addPizzaButton: {
+        backgroundColor: colors.primary,
+        paddingHorizontal: 40,
+        paddingVertical: 20,
+        borderTopRightRadius: 25,
+        borderBottomLeftRadius: 25,
+    },
+    ratingWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 20,
+    },
+    rating: {
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 12,
+        color: colors.textDark,
+        marginLeft: 5,
     },
 });
