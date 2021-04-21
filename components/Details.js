@@ -82,7 +82,7 @@ export default Details = ({ route, navigation }) => {
 
             {/** Ingredients */}
             <View style={styles.ingredientsWrapper}>
-                <Text style={styles.ingredientsTitle}></Text>
+                <Text style={styles.ingredientsTitle}>Ingredients</Text>
                 <View style={styles.ingredientsListWrapper}>
                      <FlatList
                             data={item.ingredients}
