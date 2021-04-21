@@ -94,7 +94,11 @@ export default Home = ({ navigation }) => {
                 <View style={styles.popularWrapper}>
                     <Text style={styles.popularTitle}>Popular</Text>
                     {popularData.map((item) => (
-                        <TouchableOpacity key={item.id} onPress={() => navigation.navigate('Details')}>
+                        <TouchableOpacity 
+                            key={item.id} 
+                            onPress={() => navigation.navigate('Details', {
+                                item: item,
+                            })}>
                             <View
                                 style={[
                                     styles.popularCardWrapper,
